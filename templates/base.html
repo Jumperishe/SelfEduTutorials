@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    {% block title %}
+    {% if title -%}
+        <title> Flask lessons - {{title}}</title>
+    {%else%}
+        <title>Flask lessons</title>
+    {%endif%}
+    {% endblock title %}
+</head>
+<body>
+    {% block content -%}
+        {%- block mainmenu -%}
+        <ul class="mainmenu">
+        {% for m in menu -%}
+            <li><a href="{{m.url}}">{{m.title}}</a></li>
+        {% endfor %}
+        </ul>
+        {% endblock mainmenu -%}
+    <div class="clear"></div>
+    <div class="content">
+    {% if title -%}
+        <h1> {{title}} </h1>
+    {% else %}
+        <h1>Уроки по фреймворку Flask </h1>
+    {% endif %}
+    {% endblock content -%}
+    </div>
+</body>
+</html>
